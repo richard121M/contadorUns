@@ -12,22 +12,14 @@ end contadorUns;
 
 -- Arquitetura
 architecture main of contadorUns is
---		component somaS1 is
-		
---	   end component somaS1;
+	component saidaS1 is
+		port( entA, entB, entC: in bit;
+				saida: out bit);
+	end component saidaS1;
+
 	begin
-	S1 <= (
-			(not(A) and B and C) or
-			(A and not(B) and C) or
-			(A and B and not(C)) or
-			(A and B and C)
-	);
-	S2 <= (
-			(not(A) and not(B) and C) or
-			(not(A) and B and not(C)) or
-			(A and not(B) and not(C)) or
-			(A and B and C)
-	);
+	-- instaciacao nominal
+		s01:saidaS1 port map( entA => A, entB => B, entC => C, saida => S1);
 	
 end architecture main;
 	
