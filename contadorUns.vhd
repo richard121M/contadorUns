@@ -1,8 +1,6 @@
--- bibliotecas e pacotes
 library ieee;
 use ieee.std_logic_1164.all;
 
--- entidade
 entity contadorUns is
 	port(
 		A,B,C : in bit;
@@ -10,16 +8,22 @@ entity contadorUns is
 	);
 end contadorUns;
 
--- Arquitetura
 architecture main of contadorUns is
-	component saidaS1 is
-		port( entA, entB, entC: in bit;
-				saida: out bit);
-	end component saidaS1;
 
-	begin
-	-- instaciacao nominal
-		s01:saidaS1 port map( entA => A, entB => B, entC => C, saida => S1);
+
+	component portaS1 is
+		port( entA, entB, entC: in bit; 
+				saida: out bit);
+	end component portaS1;
 	
+	component portaS2 is
+		port( entA, entB, entC: in bit; 
+				saida: out bit);
+	end component portaS2;
+	
+	
+	begin
+		ps1:portaS1 port map( entA => A, entB => B, entC => C, saida => S1);
+		ps2:portaS2 port map( entA => A, entB => B, entC => C, saida => S2);
 end architecture main;
 	
